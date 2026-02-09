@@ -1,0 +1,24 @@
+# Ignora i file di pesi dei modelli (troppo pesanti per GitHub standard)
+*.weights
+*.pb
+*.onnx
+*.h5
+
+# Ignora i video di test
+*.mp4
+*.MOV
+*.avi
+*.mkv
+
+# Ignora file specifici segnalati nell'errore
+cv_dnn/frozen_inference_graph.pb
+yolo_dnn/googlecolab/yolov4.weights
+CVvideo_ori.mp4
+CVvideo_ver.mp4
+
+# Python cache e ambienti virtuali
+__pycache__/
+*.pyc
+.ipynb_checkpoints
+.env
+.venv
