@@ -28,14 +28,11 @@ Based on the repository organization:
 ## Methodology
 The final solution is implemented in a two-stage pipeline:
 
-1. Detection (YOLOv4): * We utilized the YOLOv4 neural network (trained on the COCO dataset) to detect persons in the video feed.
+1. **Detection (YOLOv4):** We utilized the YOLOv4 neural network (trained on the COCO dataset) to detect persons in the video feed.
+   - Due to hardware constraints, detection was performed on Google Colab, and the bounding box results were exported to `result.json`.
+   - *Note*: The system runs at a reduced framerate (approx. 16 fps) to optimize processing.
 
-- Due to hardware constraints, detection was performed on Google Colab, and the bounding box results were exported to result.json.
-
-- *Note*: The system runs at a reduced framerate (approx. 16 fps) to optimize processing.
-
-2. Logic & Visualization (main.py):
-
-- Mapping: The script loads the pre-defined seat areas (ROI) from VideoPickle.
-- Occupancy Check: It checks if the center of a detected person falls within a seat's ROI.
-- Temporal Robustness: To prevent flickering (e.g., a student leaning out of frame), a counter system is used. A seat is marked "Occupied" only after a person is detected for FRAME_ROBUSTNESS consecutive frames. Conversely, it only switches to "Free" after being empty for a specific threshold.
+2. **Logic & Visualization (`main.py`):**
+   - **Mapping:** The script loads the pre-defined seat areas (ROI) from `VideoPickle`.
+   - **Occupancy Check:** It checks if the center of a detected person falls within a seat's ROI.
+   - **Temporal Robustness:** To prevent flickering (e.g., a student leaning out of frame), a counter system is used. A seat is marked "Occupied" only after a person is detected for `FRAME_ROBUSTNESS` consecutive frames. Conversely, it only switches to "Free" after being empty for a specific threshold.
